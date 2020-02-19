@@ -1,12 +1,37 @@
 # liri-node-app
 
-Video Link: 
+
+LIRI is a _Language_Interprtation_ and recognition interface. LIRI will be a command line node app that uses several API's that searches movies, songs and concerts metadata with input command, concert-this, spotify-this-song, movie-this, do-what-it-says. It does this by using axios to call the BandInTown & OBDM API and the user Spotify search will return contingent on spotify-node-api.
+
+Clone the repo, Run npm install and at the command prompt run node liri.js input command. This will retrieve the relative data. 
+
+movie-this : _default search: Mr. Nobody 
+-Title of the movie
+-Year the movie came out
+-IMDB Rating of the movie
+-Country where the movie was produced
+-Language of the movie
+-Plot of the movie
+-Actors in the movie
+
+concert-this 
+-Name of the venue
+-Venue Location
+-Date of the Event (using moment to format)
+
+spotify-this-song:  _default search: The Sign 
+-Artist
+-The song's name
+-A preview link of the song from spotify
+-The album that the song is from 
+
+do-what-it-says reads random.text
 
 
-1. Clearly state the problem the app is trying to solve (i.e. what is it doing and why)
-2. Give a high-level overview of how the app is organized
-3. Give start-to-finish instructions on how to run the app
 4. Include screenshots, gifs or videos of the app functioning
+
 5. Contain a link to a deployed version of the app
-6. Clearly list the technologies used in the app
-7. State your role in the app development
+
+Technologies used : NodeJS, JS, SpotifyAPI, BandInTown API, OMDB API, Axios, Moment, Node.js Package Managers: spotify-api-node, dotenv and request 
+
+*Sole developer of this app
