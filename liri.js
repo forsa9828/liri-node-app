@@ -3,6 +3,8 @@ require("dotenv").config();
 //VARIABLES/NPM REQUIRE
 
 var keys = require("./keys.js");
+var axios = require("axios");
+var moment = require("moment");
 var Spotify = require("node-spotify-api");
 var BandsInTown = require("BandsInTown");
 var request = require("request");
@@ -14,8 +16,8 @@ var client = new BandsInTown(keys.BandsIntown);
 
 //var Spotify = new Spotify(keys.Spotify);
 var Spotify = new Spotify({
-    id:" ",
-    secret: "",
+    id:"621b133855534379b6636ae22379f261",
+    secret: "03c85918b41d49599a1c9ff2ff3ab9f7",
 })
  
 //2 CHOOSES USER ACTIONS; 3 INPUT PARAMETER
@@ -40,7 +42,7 @@ function mySwitch () {
 
 
 
-        case "show-movie":
+        case "movie-this":
 
             showMovie();
             break;
@@ -60,35 +62,20 @@ function mySwitch () {
 
 //BandsInTown
 
-function showConcert () {
+function showConcert (artist) {
 
+    axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
+    .then(function (response) {
+      console.log("Name of the venue:", response.data[0].venue.name);
+      console.log("Venue location:", response.data[0].venue.city);
+      var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY');
+      console.log("Date of the Event:", eventDate);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
-
-var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-
-
-
-console.log(queryUrl);
-
-// Code used from OMDB Exercise done in class then added the extra output information
-
-request(queryUrl, function(err, res, body) {
-
-
-
-    if (!err && res.statusCode === 200) {
-
-
-
-        console.log("Venue: " + JSON.parse(body).venue);
-
-        console.log("Venue location: " + JSON.parse(body).location);
-
-        console.log("Date of the Event: " + JSON.parse(body).date);
-
-    }
-
-});
 
 
 //SPOTIFY --- function for running seach--spotify-this-song
@@ -122,7 +109,6 @@ function showSpotifySong() {
 
         } else {
 
-            //tried searching for release year! Spotify doesn't return this!
 
             console.log("Artist: " + data.tracks.items[0].artists[0].name);
 
@@ -147,7 +133,6 @@ function showMovie() {
 
     var movieChoice;
 
-    // Testing if search term is included with: movie-this '<movie name here>'
 
     if (secondCommand === undefined) {
 
@@ -161,7 +146,7 @@ function showMovie() {
 
 
 
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieChoice + "&y=&plot=short&apikey=40e9cece";
+    var queryUrl = "http://www.omdbapi.com/?i=" + movieChoice + "tt3896198&apikey=1763ecae";
 
 
 
@@ -183,8 +168,8 @@ function showMovie() {
 
             console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
 
-            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value); // tomatoRating does not work but this does?
-
+            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value); 
+            
             console.log("Country: " + JSON.parse(body).Country);
 
             console.log("Language: " + JSON.parse(body).Language);
@@ -237,4 +222,4 @@ function grabReadme() {
 
 
 mySwitch();
-}
+

@@ -1,0 +1,25 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "LIRI is a _Language_Interprtation_ and recognition interface. LIRI will be a command line node app that uses several API's that searches movies, songs and concerts metadata with input command, concert-this, spotify-this-song, movie-this, do-what-it-says. It does this by using axios to call the BandInTown & OBDM API and the user Spotify search will return contingent on spotify-node-api.",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forsa9828/liri-node-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forsa9828/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/forsa9828/liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "moment": "^2.24.0"
+  }
+}
