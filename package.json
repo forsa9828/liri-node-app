@@ -1,3 +1,4 @@
+"publishConfig": { "registry": "https://npm.pkg.github.com/" }
 {
   "name": "liri-node-app",
   "version": "1.0.0",
